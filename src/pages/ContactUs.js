@@ -233,6 +233,7 @@ export default function ContactUs() {
               mediaQuery.matches
                 ? {
                     paddingTop: "4em",
+                    paddingBottom: "2em",
                     fontFamily: "Poppins",
                     fontSize: "0.8rem",
                     marginLeft: "auto",
@@ -249,30 +250,30 @@ export default function ContactUs() {
                 <div>
                   {" "}
                   <FontAwesomeIcon
-                    style={{ paddingRight: "10px" }}
+                    style={{ paddingLeft: "10px", paddingRight: "10px" }}
                     icon={faFacebook}
                   />
                   facebook account
                 </div>
                 <div>
                   <FontAwesomeIcon
-                    style={{ paddingRight: "10px" }}
+                    style={{ paddingLeft: "10px", paddingRight: "10px" }}
                     icon={faTwitter}
                   />
                   twitter account
                 </div>
               </Stack>
-              <Stack rowGap={4}>
+              <Stack rowGap={mediaQuery.matches ? 2 : 4}>
                 <div>
                   <FontAwesomeIcon
-                    style={{ paddingRight: "10px" }}
+                    style={{ paddingLeft: "10px", paddingRight: "10px" }}
                     icon={faPhone}
                   />
                   phone number
                 </div>
                 <div>
                   <FontAwesomeIcon
-                    style={{ paddingRight: "10px" }}
+                    style={{ paddingLeft: "10px", paddingRight: "10px" }}
                     icon={faLinkedin}
                   />
                   linkedin account
