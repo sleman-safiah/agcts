@@ -6,18 +6,21 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function Section1() {
   let navigate = useNavigate();
+  const mediaQuery = window.matchMedia("(max-width: 680px)");
 
   return (
     <div className="section-1">
       <div className="background">
         <Carousel>
-          <Carousel.Item>
-            <div>
-              <video autoPlay muted loop className="video-background">
-                <source src="assets/backgrounf-video.mp4" type="video/mp4" />
-              </video>
-            </div>
-          </Carousel.Item>
+          {!mediaQuery.matches && (
+            <Carousel.Item>
+              <div>
+                <video autoPlay muted loop className="video-background">
+                  <source src="assets/backgrounf-video.mp4" type="video/mp4" />
+                </video>
+              </div>
+            </Carousel.Item>
+          )}
           <Carousel.Item>
             <div className="section-2">
               <img
@@ -39,9 +42,7 @@ export default function Section1() {
         </Carousel>
       </div>
 
-      <div className="title">
-        <span>ag</span> CTS
-      </div>
+      <div className="title">ag CTS</div>
 
       <div className="sub-title">Cyber Tech Solution</div>
 

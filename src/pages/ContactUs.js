@@ -29,8 +29,8 @@ const formSchema = yup.object().shape({
 export default function ContactUs() {
   const mediaQuery = window.matchMedia("(max-width: 680px)");
   let x = mediaQuery.matches ? 90 : 120;
-  let y = mediaQuery.matches ? "80%" : "100%";
-  let z = mediaQuery.mtaches ? "30%" : "45%";
+  let y = mediaQuery.matches ? "90%" : "100%";
+  let z = mediaQuery.mtaches ? "35%" : "45%";
   const [clientToken, setClientToken] = useState("");
   const [open, setOpen] = useState(false);
   const {
@@ -107,8 +107,8 @@ export default function ContactUs() {
                     sx={{
                       marginBlockEnd: 3,
                       paddingInlineEnd: 3,
+                      ml: 2,
                       mt: 2,
-                      minWidth: 120,
                       width: z
                     }}
                     id="firstName"
@@ -151,7 +151,7 @@ export default function ContactUs() {
                   sx={{
                     marginBlockEnd: 3,
                     mt: 2,
-                    ml: 1,
+                    ml: 2,
                     minWidth: 120,
                     width: y
                   }}
@@ -173,7 +173,7 @@ export default function ContactUs() {
                   sx={{
                     marginBlockEnd: 4,
                     mt: 2,
-                    ml: 1,
+                    ml: 2,
                     minWidth: 120,
                     width: y
                   }}
@@ -197,7 +197,9 @@ export default function ContactUs() {
                       display: "flex",
                       justifyContent: "space-evenly",
                       alignItems: "center",
-                      flexDirection: "column"
+                      flexDirection: "column",
+                      marginRight: "auto",
+                      marginLeft: "auto"
                     }
                   : {
                       display: "flex",
@@ -206,7 +208,7 @@ export default function ContactUs() {
                     }
               }
             >
-              <div style={{ marginTop: "2em" }}>
+              <div style={{ marginTop: "1em" }}>
                 <ReCAPTCHA
                   sitekey="6LffZb4fAAAAAPNEVwMKaHgkNV7DehAJgQjzAemM"
                   onChange={async (value) => {
@@ -232,12 +234,10 @@ export default function ContactUs() {
             style={
               mediaQuery.matches
                 ? {
-                    paddingTop: "4em",
-                    paddingBottom: "2em",
+                    paddingTop: "2em",
+                    paddingBottom: "1em",
                     fontFamily: "Poppins",
-                    fontSize: "0.8rem",
-                    marginLeft: "auto",
-                    marginRight: "auto"
+                    fontSize: "0.8rem"
                   }
                 : {
                     paddingTop: "4em",
@@ -245,7 +245,11 @@ export default function ContactUs() {
                   }
             }
           >
-            <Stack columnGap={mediaQuery.matches ? 2 : 16} direction={"row"}>
+            <Stack
+              columnGap={mediaQuery.matches ? 4 : 16}
+              style={{ columnGap: "0px", justifyContent: "space-evenly" }}
+              direction={"row"}
+            >
               <Stack rowGap={mediaQuery.matches ? 2 : 4}>
                 <div>
                   {" "}

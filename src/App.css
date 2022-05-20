@@ -27,7 +27,8 @@
   background: var(--linear-header);
   width: 100%;
   height: 80px;
-  position: absolute;
+  position: fixed;
+  top: 0px;
   z-index: 10;
   top: 0;
   display: flex;
@@ -553,7 +554,7 @@
 }
 
 .contact-title {
-  margin-top: 2em;
+  margin-top: 1em;
   margin-bottom: 1em;
   text-align: center;
   font-family: Poppins;
@@ -687,55 +688,46 @@
 }
 
 @media (max-width: 680px), screen and (orientation: portrait) {
-  .fixed {
-    position: fixed;
-    top: 0px;
+  html {
   }
 
   .header {
-    background: var(--linear-header);
     width: 100%;
-    height: 120px;
-    position: fixed;
+    height: auto;
+    position: sticky;
     z-index: 10;
-    top: 0;
     display: block;
     text-align: center;
   }
 
   .logo {
+    width: 100%;
+    background: var(--linear-header);
     font-weight: 500;
     color: white;
     font-size: 1.8rem;
     font-family: Poppins;
     margin: 0em;
     padding: 0em;
-    margin-left: 5%;
-  }
-
-  .logo span {
-    font-weight: 400;
-    font-size: 1.5rem;
   }
 
   .nav-bar {
+    margin: 0px;
+    padding: 0px;
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
+    background: var(--linear-header);
+    z-index: 10;
   }
 
   .nav-bar ul {
     width: 100%;
     display: flex;
+    align-items: center;
     justify-content: center;
-    align-items: space-between;
+    flex-direction: column;
     list-style: none;
     margin: 0;
     padding: 0;
-    position: absolute;
-    left: 0px;
-    bottom: 0px;
   }
 
   .nav-bar ul li {
@@ -745,7 +737,9 @@
     color: rgb(225, 225, 225);
     border-bottom: 3px solid transparent;
     transition: 0.3s ease-in-out;
-    padding: 0px 0.7em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    padding: 0em;
   }
 
   .nav-bar ul li:hover {
@@ -908,13 +902,15 @@
     width: 320px;
     height: 300px;
     background-color: var(--articles-card);
-    margin-top: 4em;
+    margin-top: 2em;
     display: flex;
     flex-direction: column;
     align-items: center;
     box-shadow: 0px 0px 5px rgb(89, 89, 89);
     margin-bottom: 180px;
     transition: 0.5s ease-in-out;
+    margin-right: auto;
+    margin-left: auto;
   }
 
   .article-container:hover {
@@ -960,8 +956,10 @@
   /*? Home Page */
 
   .section-1 {
+    position: relative;
+    margin-top: auto;
+    height: auto;
     width: 100%;
-    height: 50vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -971,11 +969,10 @@
   .background {
     background: rgb(0, 0, 0, 0.8);
     position: absolute;
-    top: 120px;
     z-index: -1;
     width: 100%;
-    height: 31vh;
-    object-fit: cover;
+    height: 100%;
+    object-fit: fill;
   }
 
   .title {
@@ -983,12 +980,10 @@
     margin-top: 1.5em;
     font-size: 2.5rem;
     font-family: Poppins;
-    color: white;
-  }
+    margin-left: auto;
+    margin-right: auto;
 
-  .title span {
-    font-size: 2rem;
-    color: rgb(233, 233, 233);
+    color: white;
   }
 
   .sub-title {
@@ -1001,8 +996,10 @@
   }
 
   .buttons {
-    margin-top: 1.5em;
+    margin-top: 1.2em;
     display: block;
+    width: 100%;
+    padding-bottom: 1em;
   }
 
   .buttons div {
@@ -1017,6 +1014,8 @@
     cursor: pointer;
     transition: 0.3s ease-in-out;
     margin-bottom: 5px;
+    margin-right: auto;
+    margin-left: auto;
   }
 
   .button-primary {
@@ -1026,7 +1025,8 @@
   }
 
   .button-secondary {
-    border: 1px solid white;
+    border: 1px solid rgb(73, 73, 73);
+    background-color: rgb(89, 89, 89);
     color: white;
     box-shadow: 0 0 0 0.05rem rgba(81, 21, 202, 0.1);
   }
@@ -1040,19 +1040,19 @@
   .section-2 {
     background-color: white;
     width: 100%;
-    height: 140vh;
+    height: auto;
   }
 
   .video-background {
     width: 100%;
-    /* height: 100vh; */
+    height: 100vh;
   }
 
   .sp-title {
     margin-left: auto;
     margin-right: auto;
     width: 80%;
-    padding-top: 0em;
+    padding-top: 1.2em;
     color: var(--yellow_title);
     font-size: 1rem;
     display: flex;
@@ -1251,7 +1251,7 @@
   }
 
   .contact-title {
-    margin-top: 130px;
+    margin-top: 1em;
     margin-bottom: 1em;
     text-align: center;
     font-family: Poppins;
@@ -1265,16 +1265,17 @@
 
   /* ? About us Page */
   .about-container {
+    position: relative;
     font-family: Poppins;
     width: 100%;
-    margin-top: 7em;
+    margin-top: 0.5em;
   }
 
   .about-background {
     width: 100%;
-    height: 80%;
+    height: 100%;
     position: absolute;
-    top: 6.5em;
+    top: 0em;
     z-index: -1;
   }
 
@@ -1314,7 +1315,8 @@
   }
 
   .emp-title {
-    margin-top: 3em;
+    margin-top: 1em;
+    margin-bottom: 1em;
     text-align: center;
     color: white;
     font-size: 1.5rem;
@@ -1323,14 +1325,15 @@
 
   .emp-cards {
     width: 100%;
-    height: 300px;
+    height: 125px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-evenly;
+    margin-bottom: 1em;
   }
 
   .emp-card {
-    margin-top: -10em;
+    margin-top: 0em;
     height: auto;
     position: relative;
     width: 23%;
@@ -1341,6 +1344,7 @@
     position: absolute;
     width: 100%;
     height: 100%;
+    bottom: 50%;
     font-family: Poppins;
     display: flex;
     align-items: center;
@@ -1350,13 +1354,14 @@
 
   .emp-card-info-name {
     color: white;
-    font-size: 0.9rem;
-    margin-bottom: 1em;
+    font-size: 0.7rem;
+    margin-top: 0.5em;
+    margin-bottom: 0.2em;
   }
 
   .emp-card-info-title {
     text-align: center;
-    font-size: 0.7rem;
+    font-size: 0.55rem;
     color: var(--footer_background);
     color: rgb(155, 155, 155);
   }
@@ -1365,13 +1370,13 @@
     top: 0%;
     position: absolute;
     width: 100%;
-    height: 150px;
+    height: 125px;
     border-radius: 20px;
     transition: 0.3s ease-in-out;
   }
 
   .emp-image:hover {
-    transform: translateY(5.5em);
+    transform: translateY(2.5em);
   }
 
   /* ? Form */
@@ -1384,6 +1389,7 @@
     border: none;
     border-radius: 2px;
     padding: 6px 26px;
+    margin-top: 1em;
     box-shadow: 0px 1px 3px rgb(50, 50, 50);
     transition: 0.3s ease-in-out;
   }

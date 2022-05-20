@@ -5,7 +5,7 @@ import TextField from "@mui/material/TextField";
 
 export default function Personal({ control, errors }) {
   const mediaQuery = window.matchMedia("(max-width: 680px)");
-  let x = mediaQuery.matches ? "80%%" : "40%";
+  let x = mediaQuery.matches ? "100%" : "40%";
   return (
     <div>
       <div className="q-question-title">About You</div>

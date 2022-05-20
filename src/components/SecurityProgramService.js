@@ -9,6 +9,7 @@ export default function SecurityProgramService({ title, content, mar }) {
       animateIn="fadeIn"
       animateOut="fadeOut"
       duration={0.5}
+      initiallyVisible={mediaQuery.matches}
       animateOnce
     >
       <div
