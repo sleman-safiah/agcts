@@ -7,7 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
-import "swiper/css/pagination" ;
+import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 
 export default function Section4() {
@@ -96,6 +96,7 @@ export default function Section4() {
           modules={[Navigation, Pagination, Scrollbar, A11y]}
           slidesPerView={x}
           spaceBetween={60}
+          navigation
         >
           {articles.map((article) => (
             <SwiperSlide>

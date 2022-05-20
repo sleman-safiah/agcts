@@ -5,6 +5,8 @@ import ScrollAnimation from "react-animate-on-scroll";
 import "animate.css/animate.min.css";
 
 export default function Section2() {
+  const mediaQuery = window.matchMedia("(max-width: 680px)");
+
   return (
     <div className="section-2" id="information">
       <div className="sp-title">
@@ -13,6 +15,7 @@ export default function Section2() {
           animateIn="fadeIn"
           animateOut="fadeOut"
           animateOnce={true}
+          initiallyVisible={mediaQuery.matches}
           duration={1}
         >
           <div className="sp-title-content">

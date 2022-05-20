@@ -65,7 +65,7 @@ const deviceTypes = [
 
 export default function Scoping({ type, control, checked, setChecked }) {
   const mediaQuery = window.matchMedia("(max-width: 680px)");
-  let x = mediaQuery.matches ? "80%" : "40%";
+  let x = mediaQuery.matches ? "100%" : "40%";
   const [questions, setQuestions] = useState(questionsTypes[type]);
 
   const [rowData] = useState([
@@ -235,7 +235,7 @@ export default function Scoping({ type, control, checked, setChecked }) {
 
 function QuestionHandler({ question, control, checked, setChecked }) {
   const mediaQuery = window.matchMedia("(max-width: 680px)");
-  let x = mediaQuery.matches ? "80%" : "40%";
+  let x = mediaQuery.matches ? "100%" : "40%";
   switch (question.type) {
     case 0:
       return (
@@ -296,7 +296,7 @@ function QuestionHandler({ question, control, checked, setChecked }) {
                 key={uuidv4()}
                 size="small"
                 sx={{
-                  fontSize: "0.6rem",
+                  fontSize: "0.5rem",
                   mt: 0,
                   minWidth: 120,
                   width: x

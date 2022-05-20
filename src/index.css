@@ -3,3 +3,11 @@ body {
   margin: 0;
   padding: 0;
 }
+
+@media (max-width: 680px), screen and (orientation: portrait) {
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+}

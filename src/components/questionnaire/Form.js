@@ -54,7 +54,7 @@ export default function Form() {
     setSelected(true);
   };
   const mediaQuery = window.matchMedia("(max-width: 680px)");
-  let x = mediaQuery.matches ? "80%" : "40%";
+  let x = mediaQuery.matches ? "100%" : "40%";
   return (
     <div className="q-form">
       <form
