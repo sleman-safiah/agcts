@@ -18,6 +18,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Notification from "../components/Notification";
 import axios from "axios";
+import KEYS from "../env.development";
 
 const formSchema = yup.object().shape({
   firstName: yup.string().required(),
@@ -210,7 +211,7 @@ export default function ContactUs() {
             >
               <div style={{ marginTop: "1em" }}>
                 <ReCAPTCHA
-                  sitekey="6LffZb4fAAAAAPNEVwMKaHgkNV7DehAJgQjzAemM"
+                  sitekey={KEYS.RECAPTCHA_SECRET_KEY}
                   onChange={async (value) => {
                     setClientToken(value);
                   }}

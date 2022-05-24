@@ -14,6 +14,7 @@ import * as yup from "yup";
 import ReCAPTCHA from "react-google-recaptcha";
 import axios from "axios";
 import emailjs from "@emailjs/browser";
+import KEYS from "../../env.development";
 
 import Notification from "../Notification";
 
@@ -174,7 +175,7 @@ export default function Form() {
 
         <div style={{ marginTop: "2em" }}>
           <ReCAPTCHA
-            sitekey="6LffZb4fAAAAAPNEVwMKaHgkNV7DehAJgQjzAemM"
+            sitekey={KEYS.RECAPTCHA_SECRET_KEY}
             onChange={async (value) => {
               setClientToken(value);
             }}
