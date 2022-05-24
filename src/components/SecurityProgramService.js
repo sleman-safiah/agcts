@@ -78,7 +78,7 @@ export default function SecurityProgramService() {
       columnSpacing={mediaQuery.matches ? 0 : 11}
       rowGap={4}
     >
-      <Grid container columnSpacing={4}>
+      <Grid container columnSpacing={4} rowGap={4}>
         <GridItem
           title={services[0].title}
           content={services[0].content}
@@ -95,7 +95,7 @@ export default function SecurityProgramService() {
           idx={2}
         />
       </Grid>
-      <Grid container columnSpacing={4}>
+      <Grid container columnSpacing={4} rowGap={4}>
         <GridItem
           title={services[3].title}
           content={services[3].content}
@@ -129,8 +129,10 @@ const style = {
 };
 
 function GridItem({ title, content, idx }) {
+  const mediaQuery = window.matchMedia("(max-width: 680px)");
+  let x = mediaQuery.matches ? 12 : 4;
   return (
-    <Grid item style={{ width: "33%" }}>
+    <Grid item style={{ width: "33%" }} xs={x} columnGap={4}>
       <Item>
         <div style={{ marginLeft: "1em" }}>
           {CardIcon[idx]}

@@ -6,46 +6,21 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function Section1() {
   let navigate = useNavigate();
-  const mediaQuery = window.matchMedia("(max-width: 680px)");
 
   return (
     <div className="section-1">
       <div className="background">
-        {/* <Carousel> */}
-        {!mediaQuery.matches && (
-          // <Carousel.Item>
-          <div>
-            <video
-              autoPlay
-              muted
-              playbackSpeed={0.5}
-              loop
-              className="video-background"
-            >
-              <source src="assets/video.mp4" type="video/mp4" />
-            </video>
-          </div>
-          // </Carousel.Item>
-        )}
-        {/* <Carousel.Item>
-            <div className="section-2">
-              <img
-                className="d-block w-100"
-                src="assets/backgrounf-2.jpg"
-                alt="First slide"
-              />
-            </div>
-          </Carousel.Item>
-          <Carousel.Item>
-            <div className="section-2">
-              <img
-                className="d-block w-100"
-                src="assets/backgrounf-4.jpg"
-                alt="Second slide"
-              />
-            </div>
-          </Carousel.Item> */}
-        {/* </Carousel> */}
+        <div>
+          <video
+            autoPlay
+            muted
+            playbackSpeed={0.5}
+            loop
+            className="video-background"
+          >
+            <source src="assets/video.mp4" type="video/mp4" />
+          </video>
+        </div>
       </div>
 
       <div className="title">ag CTS</div>
@@ -56,14 +31,16 @@ export default function Section1() {
         <a style={{ textDecoration: "none" }} href="/#information">
           <div className="button-primary">Learn More</div>
         </a>
-        <div
-          className="button-secondary"
-          onClick={() => {
-            navigate("/services");
-          }}
-        >
-          Services
-        </div>
+        <a style={{ textDecoration: "none" }} href="/#information">
+          <div
+            className="button-secondary"
+            onClick={() => {
+              navigate("/services");
+            }}
+          >
+            Services
+          </div>
+        </a>
       </div>
     </div>
   );

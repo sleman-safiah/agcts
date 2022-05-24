@@ -5,8 +5,6 @@ import "animate.css/animate.min.css";
 export default function Section3() {
   return (
     <div className="section-3">
-      {/* <img src="assets/4.png" alt="cybersecurity" />
-       */}
       <div>
         <video
           autoPlay
