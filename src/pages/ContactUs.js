@@ -10,7 +10,7 @@ import { faPhone } from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebook,
   faLinkedin,
-  faTwitter
+  faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 import emailjs from "@emailjs/browser";
 import ReCAPTCHA from "react-google-recaptcha";
@@ -23,7 +23,7 @@ const formSchema = yup.object().shape({
   firstName: yup.string().required(),
   lastName: yup.string().required(),
   email: yup.string().email().required(),
-  message: yup.string().required()
+  message: yup.string().required(),
 });
 
 export default function ContactUs() {
@@ -37,10 +37,10 @@ export default function ContactUs() {
     handleSubmit,
     reset,
     control,
-    formState: { errors }
+    formState: { errors },
   } = useForm({
     defaultValues: { firstName: "", lastName: "", email: "", message: "" },
-    resolver: yupResolver(formSchema)
+    resolver: yupResolver(formSchema),
   });
 
   const handleClose = (event, reason) => {
@@ -61,10 +61,10 @@ export default function ContactUs() {
               console.log(data);
               let res = await axios({
                 method: "post",
-                url: `https://www.google.com/recaptcha/api/siteverify?secret=6LffZb4fAAAAAJ_YKcjWsETzWZDOPVzjU3XUaVSp&response=${clientToken}`,
+                url: `https://www.google.com/recaptcha/api/siteverify?secret=6LeCNxEgAAAAAL2mzva835XMg1Y1CHd-QzbYjilf&response=${clientToken}`,
                 headers: {
-                  "Content-Type": "application/x-www-form-urlencoded"
-                }
+                  "Content-Type": "application/x-www-form-urlencoded",
+                },
               });
 
               if (res.data.success) {
@@ -77,7 +77,7 @@ export default function ContactUs() {
                       from_email: data.email,
                       message: data.message,
                       from_subject: "Contact US Message",
-                      email: "slemansafiah43@gmail.com"
+                      email: "slemansafiah43@gmail.com",
                     },
                     "user_iPj4aB9m9VSQ5BsiqgrK3"
                   )
@@ -109,7 +109,7 @@ export default function ContactUs() {
                       paddingInlineEnd: 3,
                       ml: 2,
                       mt: 2,
-                      width: z
+                      width: z,
                     }}
                     id="firstName"
                     label="First Name"
@@ -153,7 +153,7 @@ export default function ContactUs() {
                     mt: 2,
                     ml: 2,
                     minWidth: 120,
-                    width: y
+                    width: y,
                   }}
                   id="email"
                   label="E-Mail"
@@ -175,7 +175,7 @@ export default function ContactUs() {
                     mt: 2,
                     ml: 2,
                     minWidth: 120,
-                    width: y
+                    width: y,
                   }}
                   id="message"
                   label="Message"
@@ -199,12 +199,12 @@ export default function ContactUs() {
                       alignItems: "center",
                       flexDirection: "column",
                       marginRight: "auto",
-                      marginLeft: "auto"
+                      marginLeft: "auto",
                     }
                   : {
                       display: "flex",
                       justifyContent: "space-between",
-                      alignItems: "center"
+                      alignItems: "center",
                     }
               }
             >
@@ -237,11 +237,11 @@ export default function ContactUs() {
                     paddingTop: "2em",
                     paddingBottom: "1em",
                     fontFamily: "Poppins",
-                    fontSize: "0.8rem"
+                    fontSize: "0.8rem",
                   }
                 : {
                     paddingTop: "4em",
-                    fontFamily: "Poppins"
+                    fontFamily: "Poppins",
                   }
             }
           >

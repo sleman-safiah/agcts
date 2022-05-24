@@ -11,17 +11,23 @@ export default function Section1() {
   return (
     <div className="section-1">
       <div className="background">
-        <Carousel>
-          {!mediaQuery.matches && (
-            <Carousel.Item>
-              <div>
-                <video autoPlay muted loop className="video-background">
-                  <source src="assets/backgrounf-video.mp4" type="video/mp4" />
-                </video>
-              </div>
-            </Carousel.Item>
-          )}
-          <Carousel.Item>
+        {/* <Carousel> */}
+        {!mediaQuery.matches && (
+          // <Carousel.Item>
+          <div>
+            <video
+              autoPlay
+              muted
+              playbackSpeed={0.5}
+              loop
+              className="video-background"
+            >
+              <source src="assets/video.mp4" type="video/mp4" />
+            </video>
+          </div>
+          // </Carousel.Item>
+        )}
+        {/* <Carousel.Item>
             <div className="section-2">
               <img
                 className="d-block w-100"
@@ -38,8 +44,8 @@ export default function Section1() {
                 alt="Second slide"
               />
             </div>
-          </Carousel.Item>
-        </Carousel>
+          </Carousel.Item> */}
+        {/* </Carousel> */}
       </div>
 
       <div className="title">ag CTS</div>

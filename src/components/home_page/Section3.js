@@ -5,7 +5,19 @@ import "animate.css/animate.min.css";
 export default function Section3() {
   return (
     <div className="section-3">
-      <img src="assets/4.png" alt="cybersecurity" />
+      {/* <img src="assets/4.png" alt="cybersecurity" />
+       */}
+      <div>
+        <video
+          autoPlay
+          muted
+          playbackSpeed={0.5}
+          loop
+          // className="video-background"
+        >
+          <source src="assets/video (1).mp4" type="video/mp4" />
+        </video>
+      </div>
       <div className="audit-content">
         <div className="audit-content-details">
           <ScrollAnimation animateIn="fadeIn" animateOut="fadeOut" duration={1}>
@@ -33,7 +45,6 @@ export default function Section3() {
             <span className="audit-button">Learn More</span>
           </ScrollAnimation>
         </div>
-        <img src="assets/audit.png" alt="audit" />
       </div>
     </div>
   );

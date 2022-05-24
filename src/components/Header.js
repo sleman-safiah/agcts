@@ -5,12 +5,17 @@ export default function Header({ page, background }) {
   console.log(page);
   return (
     <div className={`header`}>
-      <div className="logo">agCTS</div>
+      <div className="logo">
+        <span>ag</span>CTS
+      </div>
       <div className="nav-bar">
         <ul>
           <Link
+            style={{
+              textDecoration: "none",
+              color: `${page === "home" ? "unset" : "#61615f"}`,
+            }}
             className={page === "home" ? "nav-bar-focus" : ""}
-            style={{ textDecoration: "none" }}
             to={"/"}
           >
             <li>HOME</li>
