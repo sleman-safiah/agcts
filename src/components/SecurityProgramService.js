@@ -27,6 +27,7 @@ const Item = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(1),
   color: theme.palette.text.secondary,
   height: "200px",
+  boxShadow: "0px 0px 3px 1px rgba(100,100,100,0.4)",
 }));
 
 let services = [

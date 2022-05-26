@@ -78,7 +78,7 @@ export default function ContactUs() {
                       from_email: data.email,
                       message: data.message,
                       from_subject: "Contact US Message",
-                      email: "slemansafiah43@gmail.com",
+                      email: KEYS.CONTACT_EMAIL,
                     },
                     "user_iPj4aB9m9VSQ5BsiqgrK3"
                   )

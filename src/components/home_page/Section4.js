@@ -77,7 +77,7 @@ export default function Section4() {
           sx={{ width: "100%" }}
           container
           spacing={mediaQuery.matches ? 0 : 8}
-          columnSpacing={mediaQuery.matches ? 0 : 11}
+          columnSpacing={mediaQuery.matches ? 0 : 8}
         >
           {" "}
           {services.map((service) => (

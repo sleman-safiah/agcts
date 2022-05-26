@@ -111,7 +111,7 @@ export default function Form() {
                   message: modifiedData,
                   from_subject:
                     "Questionnaire Request From " + data["Organization Name"],
-                  email: "slemansafiah43@gmail.com",
+                  email: KEYS.CONTACT_EMAIL,
                 },
                 "user_iPj4aB9m9VSQ5BsiqgrK3"
               )
