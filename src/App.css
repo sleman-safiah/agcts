@@ -93,19 +93,21 @@
 
 /*? Footer  */
 .footer-container {
+  z-index: 3;
   border-top: 1px solid #cccccccf;
   position: static;
   bottom: 0px;
   width: 100%;
   height: 300px;
-  background-color: var(--footer_background);
   display: flex;
+  background-color: var(--footer_background);
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
 .footer {
+  background-color: var(--footer_background);
   width: 100%;
   display: flex;
   align-items: center;
@@ -570,17 +572,23 @@
 
 /* ? About us Page */
 .about-container {
-  background: url("../public/assets/about/about-us-1.png");
   font-family: Poppins;
   width: 100%;
+  height: 100vh;
 }
 
-.about-container > div {
-  padding-top: 6em;
-  padding-bottom: 3em;
+.video-about {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  z-index: -1;
+  object-fit: cover;
+  filter: brightness(0.4) hue-rotate(50deg);
 }
 
 .about-title {
+  padding-top: 3em;
   color: white;
   font-size: 3rem;
   font-weight: 500;
@@ -633,9 +641,6 @@
 }
 
 @media (max-width: 680px), screen and (orientation: portrait) {
-  html {
-  }
-
   .menu {
     position: absolute;
     right: 1em;
@@ -1625,5 +1630,41 @@
   .contact-image {
     height: 100vh;
     /* object-fit: contain; */
+  }
+
+  .about-title {
+    padding-top: 2em;
+    color: white;
+    font-size: 5rem;
+    font-weight: 500;
+    text-align: center;
+  }
+
+  .about-title span {
+    color: rgb(242, 242, 242);
+    font-size: 3.5rem;
+    font-weight: 400;
+  }
+
+  .about-sub-title {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: 3em;
+    letter-spacing: 4px;
+    word-spacing: 6px;
+  }
+
+  .about-content {
+    color: white;
+    margin-left: 15%;
+    margin-bottom: 2em;
+  }
+
+  .about-content > div {
+    padding-top: 1em;
+    padding-bottom: 0.5em;
+    font-size: larger;
   }
 }

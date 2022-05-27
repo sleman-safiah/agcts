@@ -11,6 +11,7 @@ export default function ServicesComp() {
       .get("https://agcts-backend.herokuapp.com/v1/service/getAllServices")
       .then((res) => {
         setServices(res.data.services);
+        console.log(services);
       });
   }, []);
 
