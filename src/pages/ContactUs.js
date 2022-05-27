@@ -20,18 +20,23 @@ import Notification from "../components/Notification";
 import axios from "axios";
 import KEYS from "../env.development";
 
+const phoneRegExp =
+  /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
+
 const formSchema = yup.object().shape({
   firstName: yup.string().required(),
   lastName: yup.string().required(),
   email: yup.string().email().required(),
   message: yup.string().required(),
+  mobile: yup.string().matches(phoneRegExp).required(),
+  subject: yup.string().required(),
 });
 
 export default function ContactUs() {
   const mediaQuery = window.matchMedia("(max-width: 680px)");
   let x = mediaQuery.matches ? 90 : 120;
   let y = mediaQuery.matches ? "90%" : "100%";
-  let z = mediaQuery.mtaches ? "35%" : "45%";
+  let z = mediaQuery.mtaches ? "35%" : "50%";
   const [clientToken, setClientToken] = useState("");
   const [open, setOpen] = useState(false);
   const {
@@ -40,7 +45,14 @@ export default function ContactUs() {
     control,
     formState: { errors },
   } = useForm({
-    defaultValues: { firstName: "", lastName: "", email: "", message: "" },
+    defaultValues: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      message: "",
+      mobile: "",
+      subject: "",
+    },
     resolver: yupResolver(formSchema),
   });
 
@@ -98,7 +110,7 @@ export default function ContactUs() {
             })}
           >
             <div className="contact-title">Contact Us</div>
-            <div className="contact-container">
+            <div className="contact-container-name">
               <Controller
                 name="firstName"
                 control={control}
@@ -108,7 +120,6 @@ export default function ContactUs() {
                     sx={{
                       marginBlockEnd: 3,
                       paddingInlineEnd: 3,
-                      ml: 2,
                       mt: 2,
                       width: z,
                     }}
@@ -151,8 +162,7 @@ export default function ContactUs() {
                   {...field}
                   sx={{
                     marginBlockEnd: 3,
-                    mt: 2,
-                    ml: 2,
+                    mt: 0,
                     minWidth: 120,
                     width: y,
                   }}
@@ -165,6 +175,56 @@ export default function ContactUs() {
                 />
               )}
             />
+            <div>
+              <Controller
+                name="mobil"
+                control={control}
+                render={({ field }) => (
+                  <TextField
+                    {...field}
+                    sx={{
+                      marginBlockEnd: 3,
+                      mt: 0,
+                      minWidth: 120,
+                      width: y,
+                    }}
+                    id="mobile"
+                    label="Mobile"
+                    variant="outlined"
+                    size="small"
+                    error={errors["mobile"] ? true : false}
+                    helperText={
+                      errors["mobile"] ? "mobile number is not valid" : ""
+                    }
+                  />
+                )}
+              />
+            </div>
+            <div>
+              <Controller
+                name="subject"
+                control={control}
+                render={({ field }) => (
+                  <TextField
+                    {...field}
+                    sx={{
+                      marginBlockEnd: 3,
+                      mt: 0,
+                      minWidth: 120,
+                      width: y,
+                    }}
+                    id="subject"
+                    label="Subject"
+                    variant="outlined"
+                    size="small"
+                    error={errors["subject"] ? true : false}
+                    helperText={
+                      errors["subject"] ? errors["subject"].message : ""
+                    }
+                  />
+                )}
+              />
+            </div>
             <Controller
               name="message"
               control={control}
@@ -173,8 +233,7 @@ export default function ContactUs() {
                   {...field}
                   sx={{
                     marginBlockEnd: 4,
-                    mt: 2,
-                    ml: 2,
+                    mt: 0,
                     minWidth: 120,
                     width: y,
                   }}
