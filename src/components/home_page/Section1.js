@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import Carousel from "react-bootstrap/Carousel";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function Section1() {
@@ -18,7 +17,10 @@ export default function Section1() {
             loop
             className="video-background"
           >
-            <source src="assets/video.mp4" type="video/mp4" />
+            <source
+              src="https://apparel-agcts.s3.eu-west-1.amazonaws.com/web/videos/home2.mp4"
+              type="video/mp4"
+            />
           </video>
         </div>
       </div>

@@ -11,7 +11,10 @@ export default function AboutUs() {
       <Header background={true} page="about-us" />
       <div>
         <video autoPlay muted playbackSpeed={0.5} loop className="video-about">
-          <source src="assets/about/video.mp4" type="video/mp4" />
+          <source
+            src="https://apparel-agcts.s3.eu-west-1.amazonaws.com/web/videos/about.mp4"
+            type="video/mp4"
+          />
         </video>
       </div>
       <div className="about-container">

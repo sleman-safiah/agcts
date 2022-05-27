@@ -110,7 +110,11 @@ export default function ContactUs() {
             })}
           >
             <div className="contact-title">Contact Us</div>
-            <div className="contact-container-name">
+            <div
+              className={`${
+                !mediaQuery.matches ? "contact-container-name" : ""
+              }`}
+            >
               <Controller
                 name="firstName"
                 control={control}
@@ -119,9 +123,9 @@ export default function ContactUs() {
                     {...field}
                     sx={{
                       marginBlockEnd: 3,
-                      paddingInlineEnd: 3,
+                      mr: 1,
                       mt: 2,
-                      width: z,
+                      width: mediaQuery.matches ? "90%" : z,
                     }}
                     id="firstName"
                     label="First Name"
@@ -141,7 +145,11 @@ export default function ContactUs() {
                 render={({ field }) => (
                   <TextField
                     {...field}
-                    sx={{ marginBlockEnd: 3, mt: 2, minWidth: 120, width: z }}
+                    sx={{
+                      marginBlockEnd: 3,
+                      mt: mediaQuery.matches ? 0 : 2,
+                      width: mediaQuery.matches ? "90%" : z,
+                    }}
                     id="lastName"
                     label="Last Name"
                     variant="outlined"
@@ -290,7 +298,7 @@ export default function ContactUs() {
               handleClose={handleClose}
             />
           </form>
-          <div
+          {/* <div
             style={
               mediaQuery.matches
                 ? {
@@ -344,7 +352,7 @@ export default function ContactUs() {
                 </div>
               </Stack>
             </Stack>
-          </div>
+          </div> */}
         </div>
         {mediaQuery.matches ? (
           <></>

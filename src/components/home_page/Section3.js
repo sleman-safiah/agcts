@@ -13,7 +13,10 @@ export default function Section3() {
           loop
           // className="video-background"
         >
-          <source src="assets/video (1).mp4" type="video/mp4" />
+          <source
+            src="https://apparel-agcts.s3.eu-west-1.amazonaws.com/web/videos/home.mp4"
+            type="video/mp4"
+          />
         </video>
       </div>
       <div className="audit-content">
