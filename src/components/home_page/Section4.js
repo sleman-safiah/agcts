@@ -63,7 +63,7 @@ export default function Section4() {
     },
   ];
   return (
-    <div>
+    <div id="cyber">
       <img src="assets/10.svg" alt="01" className="zero-one-background" />
       {/* <img src="assets/shield.svg" alt="01" className="shield-background" /> */}
       <img

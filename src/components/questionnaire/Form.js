@@ -11,8 +11,6 @@ import Stack from "@mui/material/Stack";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import ReCAPTCHA from "react-google-recaptcha";
-import axios from "axios";
 import emailjs from "@emailjs/browser";
 import KEYS from "../../env.development";
 
@@ -30,7 +28,6 @@ export default function Form() {
   const [selected, setSelected] = useState(false);
   const [type, setType] = useState("");
   const [checked, setChecked] = useState({});
-  const [clientToken, setClientToken] = useState("");
   const [openNotification, setOpenNotification] = useState(false);
   const {
     handleSubmit,
@@ -60,76 +57,73 @@ export default function Form() {
     <div className="q-form">
       <form
         onSubmit={handleSubmit(async (data) => {
-          console.log("waiting ...");
-          let res = await axios({
-            method: "post",
-            url: `https://www.google.com/recaptcha/api/siteverify?secret=6LeCNxEgAAAAAL2mzva835XMg1Y1CHd-QzbYjilf&response=${clientToken}`,
-            headers: {
-              "Content-Type": "application/x-www-form-urlencoded",
-            },
-          });
-
-          if (res.data.success) {
-            let modifiedData = [];
-            function divIt(obj) {
-              if (typeof obj === "object") {
-                let keys = Object.keys(obj);
-                console.log(keys);
-                keys.forEach((key) => {
-                  if (typeof obj[key] === "object") {
-                    Object.keys(obj[key]).forEach((subObj) => {
-                      modifiedData.push(
-                        `${subObj} : ${obj[key][subObj]} \t\t\n`
-                      );
+          window.grecaptcha.ready(() => {
+            window.grecaptcha
+              .execute(KEYS.GOOGLE_RECAPTCHA_SITE_KEY, { action: "submit" })
+              .then(() => {
+                let modifiedData = [];
+                function divIt(obj) {
+                  if (typeof obj === "object") {
+                    let keys = Object.keys(obj);
+                    console.log(keys);
+                    keys.forEach((key) => {
+                      if (typeof obj[key] === "object") {
+                        Object.keys(obj[key]).forEach((subObj) => {
+                          modifiedData.push(
+                            `${subObj} : ${obj[key][subObj]} \t\t\n`
+                          );
+                        });
+                      }
+                      if (
+                        typeof obj[key] === "string" ||
+                        (typeof obj[key] === "boolean" && obj[key] === true)
+                      ) {
+                        modifiedData.push(`${key} : ${obj[key]} \t\t\n`);
+                      }
                     });
+                  } else {
                   }
-                  if (
-                    typeof obj[key] === "string" ||
-                    (typeof obj[key] === "boolean" && obj[key] === true)
-                  ) {
-                    modifiedData.push(`${key} : ${obj[key]} \t\t\n`);
+                }
+
+                Object.keys(data).forEach((key) => {
+                  divIt(data[key]);
+                  if (typeof data[key] === "string") {
+                    modifiedData.push(`${key} : ${data[key]}`);
                   }
                 });
-              } else {
-              }
-            }
 
-            Object.keys(data).forEach((key) => {
-              divIt(data[key]);
-              if (typeof data[key] === "string") {
-                modifiedData.push(`${key} : ${data[key]}`);
-              }
-            });
-
-            emailjs
-              .send(
-                "service_0fvgqqp",
-                "template_xlo9jmg",
-                {
-                  from_name: data["First Name"] + " " + data["Last Name"],
-                  from_email: data["Email"],
-                  message: modifiedData,
-                  from_subject:
-                    "Questionnaire Request From " + data["Organization Name"],
-                  email: KEYS.CONTACT_EMAIL,
-                },
-                "user_iPj4aB9m9VSQ5BsiqgrK3"
-              )
-              .then(
-                function (response) {
-                  console.log("SUCCESS!", response.status, response.text);
-                },
-                function (error) {
-                  console.log("FAILED...", error);
-                }
-              );
-            reset({});
-            setType("");
-            setSelected(false);
-            setOpenNotification(true);
-          } else {
-            console.log("Error in Recaptcha");
-          }
+                emailjs
+                  .send(
+                    "service_0fvgqqp",
+                    "template_xlo9jmg",
+                    {
+                      from_name: data["First Name"] + " " + data["Last Name"],
+                      from_email: data["Email"],
+                      message: modifiedData,
+                      from_subject:
+                        "Questionnaire Request From " +
+                        data["Organization Name"],
+                      email: KEYS.CONTACT_EMAIL,
+                    },
+                    "user_iPj4aB9m9VSQ5BsiqgrK3"
+                  )
+                  .then(
+                    function (response) {
+                      console.log("SUCCESS!", response.status, response.text);
+                    },
+                    function (error) {
+                      console.log("FAILED...", error);
+                    }
+                  );
+                reset({});
+                setType("");
+                setSelected(false);
+                setOpenNotification(true);
+              })
+              .catch((err) => {
+                console.log("Error in Recaptcha");
+              });
+          });
         })}
       >
         <div className="q-question">
@@ -173,14 +167,6 @@ export default function Form() {
           </div>
         )}
 
-        <div style={{ marginTop: "2em" }}>
-          <ReCAPTCHA
-            sitekey={KEYS.RECAPTCHA_SECRET_KEY}
-            onChange={async (value) => {
-              setClientToken(value);
-            }}
-          />
-        </div>
         <div className="q-divider" />
 
         <div className="q-buttons">

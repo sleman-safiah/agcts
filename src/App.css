@@ -461,9 +461,9 @@
 .audit-subtitle {
   width: 90%;
   color: var(--sub_title_color);
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   font-weight: 300;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2em;
 }
 
 .audit-button {
@@ -557,9 +557,10 @@
 }
 
 .contact-container-button {
+  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .contact-title {
@@ -1125,19 +1126,17 @@
     color: white;
     font-size: 3rem;
     margin-top: -2em;
-    margin-bottom: 1rem;
   }
 
   .audit-subtitle {
     width: 90%;
     color: var(--sub_title_color);
-    font-size: 0.8rem;
-    margin-bottom: 1rem;
+    font-size: 0.7rem;
   }
   .audit-button {
     position: absolute;
     right: 5%;
-    bottom: -50%;
+    bottom: -30%;
     text-align: center;
     display: block;
     width: 35%;

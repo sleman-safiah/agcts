@@ -4,40 +4,33 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 import { Controller, useForm } from "react-hook-form";
-import { TextField, Stack } from "@mui/material";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPhone } from "@fortawesome/free-solid-svg-icons";
-import {
-  faFacebook,
-  faLinkedin,
-  faTwitter,
-} from "@fortawesome/free-brands-svg-icons";
+import { TextField } from "@mui/material";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faPhone } from "@fortawesome/free-solid-svg-icons";
+// import {
+//   faFacebook,
+//   faLinkedin,
+//   faTwitter,
+// } from "@fortawesome/free-brands-svg-icons";
 import emailjs from "@emailjs/browser";
-import ReCAPTCHA from "react-google-recaptcha";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import Notification from "../components/Notification";
-import axios from "axios";
 import KEYS from "../env.development";
-
-const phoneRegExp =
-  /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
 const formSchema = yup.object().shape({
   firstName: yup.string().required(),
   lastName: yup.string().required(),
   email: yup.string().email().required(),
   message: yup.string().required(),
-  mobile: yup.string().matches(phoneRegExp).required(),
+  mobile: yup.string().required(),
   subject: yup.string().required(),
 });
 
 export default function ContactUs() {
   const mediaQuery = window.matchMedia("(max-width: 680px)");
-  let x = mediaQuery.matches ? 90 : 120;
   let y = mediaQuery.matches ? "90%" : "100%";
   let z = mediaQuery.mtaches ? "35%" : "50%";
-  const [clientToken, setClientToken] = useState("");
   const [open, setOpen] = useState(false);
   const {
     handleSubmit,
@@ -71,42 +64,54 @@ export default function ContactUs() {
         <div className="contact-form">
           <form
             onSubmit={handleSubmit(async (data) => {
-              console.log(data);
-              let res = await axios({
-                method: "post",
-                url: `https://www.google.com/recaptcha/api/siteverify?secret=6LeCNxEgAAAAAL2mzva835XMg1Y1CHd-QzbYjilf&response=${clientToken}`,
-                headers: {
-                  "Content-Type": "application/x-www-form-urlencoded",
-                },
+              window.grecaptcha.ready(() => {
+                window.grecaptcha
+                  .execute(KEYS.GOOGLE_RECAPTCHA_SITE_KEY, { action: "submit" })
+                  .then(() => {
+                    emailjs
+                      .send(
+                        "service_0fvgqqp",
+                        "template_pkxlq1f",
+                        {
+                          from_name: data.firstName + " " + data.lastName,
+                          from_email: data.email,
+                          message: data.message,
+                          from_subject: "Contact US Message",
+                          email: KEYS.CONTACT_EMAIL,
+                        },
+                        "user_iPj4aB9m9VSQ5BsiqgrK3"
+                      )
+                      .then(
+                        function (response) {
+                          console.log(
+                            "SUCCESS!",
+                            response.status,
+                            response.text
+                          );
+                        },
+                        function (error) {
+                          console.log("FAILED...", error);
+                        }
+                      );
+                    reset({
+                      firstName: "",
+                      lastName: "",
+                      email: "",
+                      message: "",
+                    });
+                    setOpen(true);
+                  })
+                  .catch((err) => {
+                    console.log("Error in Recaptcha");
+                  });
               });
-
-              if (res.data.success) {
-                emailjs
-                  .send(
-                    "service_0fvgqqp",
-                    "template_pkxlq1f",
-                    {
-                      from_name: data.firstName + " " + data.lastName,
-                      from_email: data.email,
-                      message: data.message,
-                      from_subject: "Contact US Message",
-                      email: KEYS.CONTACT_EMAIL,
-                    },
-                    "user_iPj4aB9m9VSQ5BsiqgrK3"
-                  )
-                  .then(
-                    function (response) {
-                      console.log("SUCCESS!", response.status, response.text);
-                    },
-                    function (error) {
-                      console.log("FAILED...", error);
-                    }
-                  );
-                reset({ firstName: "", lastName: "", email: "", message: "" });
-                setOpen(true);
-              } else {
-                console.log("Error in Recaptcha");
-              }
+              // let res = await axios({
+              //   method: "POST",
+              //   url: `https://www.google.com/recaptcha/api/siteverify?secret=${KEYS.GOOGLE_RECAPTCHA_SECRET_KEY}&response=${clientToken}`,
+              //   headers: {
+              //     "Content-Type": "application/x-www-form-urlencoded",
+              //   },
+              // });
             })}
           >
             <div className="contact-title">Contact Us</div>
@@ -185,7 +190,7 @@ export default function ContactUs() {
             />
             <div>
               <Controller
-                name="mobil"
+                name="mobile"
                 control={control}
                 render={({ field }) => (
                   <TextField
@@ -202,7 +207,7 @@ export default function ContactUs() {
                     size="small"
                     error={errors["mobile"] ? true : false}
                     helperText={
-                      errors["mobile"] ? "mobile number is not valid" : ""
+                      errors["mobile"] ? errors["mobile"].message : ""
                     }
                   />
                 )}
@@ -276,14 +281,6 @@ export default function ContactUs() {
                     }
               }
             >
-              <div style={{ marginTop: "1em" }}>
-                <ReCAPTCHA
-                  sitekey={KEYS.RECAPTCHA_SECRET_KEY}
-                  onChange={async (value) => {
-                    setClientToken(value);
-                  }}
-                />
-              </div>
               <div className="contact-container-button">
                 <input
                   className="contact-us-button"

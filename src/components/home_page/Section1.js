@@ -33,10 +33,14 @@ export default function Section1() {
         <a style={{ textDecoration: "none" }} href="/#information">
           <div className="button-primary">Learn More</div>
         </a>
-        <a style={{ textDecoration: "none" }} href="/#information">
+        <a
+          style={{ textDecoration: "none", scroll: "smooth" }}
+          href="/#information"
+        >
           <div
             className="button-secondary"
-            onClick={() => {
+            onClick={(e) => {
+              e.preventDefault();
               navigate("/services");
             }}
           >

@@ -32,9 +32,13 @@ export default function Section3() {
           >
             <div className="audit-subtitle">
               {" "}
-              Some dummy data about the audit and cybersecurity services and
-              some description about it t the audit and cybersecurity services
-              and some description about it
+              With in-depth insights on the Business-specific risks, we offer
+              tailored audit services across all business disciplines,
+              accelerating your company’s business performance. We provide Data
+              and Analytics (D&A) services that facilitate a better
+              understanding for stakeholders and ensure that our strategies
+              align with your business values, such that they enable smarter
+              decision-making capabilities.
             </div>
           </ScrollAnimation>
           <ScrollAnimation
@@ -43,7 +47,12 @@ export default function Section3() {
             duration={1}
             delay={1000}
           >
-            <span className="audit-button">Learn More</span>
+            <a
+              style={{ textDecoration: "none", scroll: "smooth" }}
+              href="/#cyber"
+            >
+              <span className="audit-button">Learn More</span>
+            </a>
           </ScrollAnimation>
         </div>
       </div>
