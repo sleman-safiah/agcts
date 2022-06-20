@@ -17,59 +17,55 @@ export default function Section4() {
     {
       src: "assets/services/Data-Privacy.png",
       title: "Data Privacy",
-      desc:
-        "Collect, process, store data responsibly, Give control of personal data to user by managing their consent and building process to help them exercise their rights."
+      desc: "Collect, process, store data responsibly, Give control of personal data to user by managing their consent and building process to help them exercise their rights.",
     },
     {
       src: "assets/services/Data-Security.png",
       title: "Data Security",
-      desc:
-        "Can help encrypt your most critical data and organizational interests with our best-in-class Data Security services."
+      desc: "Can help encrypt your most critical data and organizational interests with our best-in-class Data Security services.",
     },
     {
       src: "assets/services/Microsoft.png",
       title: "Cloud Security",
-      desc:
-        "Can assist your security needs at any stages of your cloud journey with our highly experienced and certified cloud security architects and technology evangelists."
+      desc: "Can assist your security needs at any stages of your cloud journey with our highly experienced and certified cloud security architects and technology evangelists.",
     },
     {
       src: "assets/services/Network-Security.png",
       title: "Network Security",
-      desc:
-        "Network is the nerve of your organization's data, Paramount protects your networks against communication leaks are not happening."
-    }
+      desc: "Network is the nerve of your organization's data, Paramount protects your networks against communication leaks are not happening.",
+    },
   ];
 
   let articles = [
     {
       title: "THE GOOD 'BAD GUYS ' - WHAT IS RED TEAM ASSESSMENT?",
-      desc: "Tuesday, 11, February, 2020"
+      desc: "Tuesday, 11, February, 2020",
     },
     {
       title:
         "Top 5 Questions You Should Ask When Evaluation An Industry Management Solution.",
-      desc: "Thursday, 20, February, 2021"
+      desc: "Thursday, 20, February, 2021",
     },
     {
       title:
         "What Are The Top 5 Questions Organizations Should Ask Their Potential Access Management.",
-      desc: "Tuesday, 18, March, 2022"
+      desc: "Tuesday, 18, March, 2022",
     },
     {
       title:
         "Top 5 Questions You Should Ask When Evaluation An Industry Management Solution.",
-      desc: "Thursday, 20, February, 2021"
+      desc: "Thursday, 20, February, 2021",
     },
     {
       title:
         "What Are The Top 5 Questions Organizations Should Ask Their Potential Access Management.",
-      desc: "Tuesday, 18, March, 2022"
-    }
+      desc: "Tuesday, 18, March, 2022",
+    },
   ];
   return (
-    <div>
+    <div id="cyber">
       <img src="assets/10.svg" alt="01" className="zero-one-background" />
-      <img src="assets/shield.svg" alt="01" className="shield-background" />
+      {/* <img src="assets/shield.svg" alt="01" className="shield-background" /> */}
       <img
         className="cs-background"
         src="assets/cyber-back.svg"
@@ -81,7 +77,7 @@ export default function Section4() {
           sx={{ width: "100%" }}
           container
           spacing={mediaQuery.matches ? 0 : 8}
-          columnSpacing={mediaQuery.matches ? 0 : 11}
+          columnSpacing={mediaQuery.matches ? 0 : 8}
         >
           {" "}
           {services.map((service) => (
@@ -97,6 +93,7 @@ export default function Section4() {
           slidesPerView={x}
           spaceBetween={60}
           navigation
+          style={{ height: "300px" }}
         >
           {articles.map((article) => (
             <SwiperSlide>

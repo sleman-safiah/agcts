@@ -1,45 +1,28 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-import Carousel from "react-bootstrap/Carousel";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function Section1() {
   let navigate = useNavigate();
-  const mediaQuery = window.matchMedia("(max-width: 680px)");
 
   return (
     <div className="section-1">
       <div className="background">
-        <Carousel>
-          {!mediaQuery.matches && (
-            <Carousel.Item>
-              <div>
-                <video autoPlay muted loop className="video-background">
-                  <source src="assets/backgrounf-video.mp4" type="video/mp4" />
-                </video>
-              </div>
-            </Carousel.Item>
-          )}
-          <Carousel.Item>
-            <div className="section-2">
-              <img
-                className="d-block w-100"
-                src="assets/backgrounf-2.jpg"
-                alt="First slide"
-              />
-            </div>
-          </Carousel.Item>
-          <Carousel.Item>
-            <div className="section-2">
-              <img
-                className="d-block w-100"
-                src="assets/backgrounf-4.jpg"
-                alt="Second slide"
-              />
-            </div>
-          </Carousel.Item>
-        </Carousel>
+        <div>
+          <video
+            autoPlay
+            muted
+            playbackSpeed={0.5}
+            loop
+            className="video-background"
+          >
+            <source
+              src="https://apparel-agcts.s3.eu-west-1.amazonaws.com/web/videos/home2.mp4"
+              type="video/mp4"
+            />
+          </video>
+        </div>
       </div>
 
       <div className="title">ag CTS</div>
@@ -50,14 +33,20 @@ export default function Section1() {
         <a style={{ textDecoration: "none" }} href="/#information">
           <div className="button-primary">Learn More</div>
         </a>
-        <div
-          className="button-secondary"
-          onClick={() => {
-            navigate("/services");
-          }}
+        <a
+          style={{ textDecoration: "none", scroll: "smooth" }}
+          href="/#information"
         >
-          Services
-        </div>
+          <div
+            className="button-secondary"
+            onClick={(e) => {
+              e.preventDefault();
+              navigate("/services");
+            }}
+          >
+            Services
+          </div>
+        </a>
       </div>
     </div>
   );

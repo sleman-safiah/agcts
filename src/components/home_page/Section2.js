@@ -1,12 +1,10 @@
 import React from "react";
-
-import SecurityProgram from "../SecurityProgram";
 import ScrollAnimation from "react-animate-on-scroll";
 import "animate.css/animate.min.css";
+import SecurityProgramService from "../SecurityProgramService";
 
 export default function Section2() {
   const mediaQuery = window.matchMedia("(max-width: 680px)");
-
   return (
     <div className="section-2" id="information">
       <div className="sp-title">
@@ -24,10 +22,7 @@ export default function Section2() {
         </ScrollAnimation>
       </div>
       <div className="sp-content">
-        <SecurityProgram />
-        <div className="sp-content-image">
-          <img src="assets/3.png" alt="security program" />
-        </div>
+        <SecurityProgramService />
       </div>
     </div>
   );

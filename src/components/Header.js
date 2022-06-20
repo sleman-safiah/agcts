@@ -1,16 +1,44 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-
+import { Menu } from "@mui/icons-material";
 export default function Header({ page, background }) {
   console.log(page);
+  const mediaQuery = window.matchMedia("(max-width: 680px)");
+
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    const node = document.querySelector(".nav-bar");
+    node.classList.toggle("close-menu");
+  }, [open]);
+
+  useEffect(() => {
+    setOpen(false);
+  }, []);
+
   return (
     <div className={`header`}>
-      <div className="logo">agCTS</div>
+      {mediaQuery.matches && (
+        <div
+          className="menu"
+          onClick={(e) => {
+            setOpen((prev) => !prev);
+          }}
+        >
+          <Menu fontSize="large" color="#03257e" />
+        </div>
+      )}
+      <div className="logo">
+        <span>ag</span>CTS
+      </div>
       <div className="nav-bar">
         <ul>
           <Link
+            style={{
+              textDecoration: "none",
+              color: `${page === "home" ? "unset" : "#61615f"}`,
+            }}
             className={page === "home" ? "nav-bar-focus" : ""}
-            style={{ textDecoration: "none" }}
             to={"/"}
           >
             <li>HOME</li>
